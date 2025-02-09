@@ -1,29 +1,22 @@
 import Phaser from 'phaser';
+import player from '@assets/sprites/player.png';
+import { Player } from '../../objects/dynamic/chars/Player';
 
 export class Main extends Phaser.Scene {
-  preload() {
-    this.load.setBaseURL('https://labs.phaser.io');
+  player?: Player;
 
-    this.load.image('sky', 'assets/skies/space3.png');
-    this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-    this.load.image('red', 'assets/particles/red.png');
+  preload() {
+    this.load.spritesheet('player', player, {
+      frameWidth: 51,
+      frameHeight: 64,
+    });
   }
 
   create() {
-    this.add.image(400, 300, 'sky');
+    this.player = new Player(this, 100, 450, 'player');
+  }
 
-    const particles = this.add.particles(0, 0, 'red', {
-      speed: 100,
-      scale: { start: 1, end: 0 },
-      blendMode: 'ADD',
-    });
-
-    const logo = this.physics.add.image(400, 100, 'logo');
-
-    logo.setVelocity(100, 200);
-    logo.setBounce(1, 1);
-    logo.setCollideWorldBounds(true);
-
-    particles.startFollow(logo);
+  update() {
+    this.player?.update();
   }
 }

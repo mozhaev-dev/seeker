@@ -9,9 +9,6 @@ const config = {
   scene: Main,
   physics: {
     default: 'arcade',
-    arcade: {
-      gravity: { y: 200, x: 200 },
-    },
   },
 };
 

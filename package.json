@@ -10,6 +10,7 @@
     "lint": "eslint src --ext .ts --fix"
   },
   "devDependencies": {
+    "@types/node": "^22.13.1",
     "eslint": "^9.20.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
